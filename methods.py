@@ -1,43 +1,42 @@
 
-def apresenteSe ():
-    print('+-------------------------------------------------------------+')
-    print('|                                                             |')
-    print('| AGENDA PESSOAL DE ANIVERSÁRIOS E FORMAS DE CONTATAR PESSOAS |')
-    print('|                                                             |')
-    print('| Prof André Luís dos Reis Gomes de Carvalho                  |')
-    print('|                                                             |')
-    print('| Versão 1.0 de 12/abril/2024                                 |')
-    print('|                                                             |')
-    print('+-------------------------------------------------------------+')
+def apresenteSe():
+    print('+-------------------------------------------------------------+\n\
+           |                                                             |\n\
+           | AGENDA PESSOAL DE ANIVERSÁRIOS E FORMAS DE CONTATAR PESSOAS |\n\
+           |                                                             |\n\
+           |                                                             |\n\
+           | Versão 1.0 de 12/abril/2024                                 |\n\
+           |                                                             |\n\
+           +-------------------------------------------------------------+')
 
-def umTexto (solicitacao, mensagem, valido):
+def text (solicitacao, mensagem, validate):
     digitouDireito=False
     while not digitouDireito:
         txt=input(solicitacao)
 
-        if txt not in valido:
+        if txt not in validate:
             print(mensagem,'- Favor redigitar...')
         else:
             digitouDireito=True
 
     return txt
 
-def opcaoEscolhida (mnu):
+def chosen(mnu):
     print ()
 
     opcoesValidas=[]
-    posicao=0
-    while posicao<len(mnu):
-        print (posicao+1,') ',mnu[posicao],sep='')
-        opcoesValidas.append(str(posicao+1))
-        posicao+=1
+    pos=0
+    while pos<len(mnu):
+        print (pos +1,') ',mnu[pos],sep='')
+        opcoesValidas.append(str(pos + 1))
+        pos += 1
 
     print()
-    return umTexto('Qual é a sua opção? ', 'Opção inválida', opcoesValidas)
+    return text('Qual é a sua opção? ', 'Opção inválida', opcoesValidas)
 
 def ondeEsta (nom,agd):
-    inicio=0
-    final =len(agd)-1
+    inicio= 0
+    final = len(agd)-1
     
     while inicio<=final:
         meio=(inicio+final)//2
@@ -202,3 +201,84 @@ print('OBRIGADO POR USAR ESTE PROGRAMA!')
 
 
 #omo cu cabeludo
+def text(inputText, mensagem, validate):
+    digitouDireito=False
+    while not digitouDireito:
+        txt=input(inputText)
+
+        if txt not in validate:
+            print(mensagem,'- Favor redigitar...')
+        else:
+            digitouDireito=True
+
+    return txt
+
+def chosen(mnu):
+    print ()
+
+    opcoesValidas=[]
+    pos=0
+    while pos<len(mnu):
+        print (pos+1,') ',mnu[pos],sep='')
+        opcoesValidas.append(str(pos+1))
+        pos+=1
+
+    print()
+    return text('Qual é a sua opção? ', 'Opção inválida. Por favor, tente novamente.', opcoesValidas)
+
+def pos(nom,agd):
+    ini=0
+    final =len(agd)-1
+    
+    while ini<=final:
+        meio=(ini+final)//2
+        
+        if nom.upper()==agd[meio][0].upper():
+            return [True,meio]
+        elif nom.upper()<agd[meio][0].upper():
+            final=meio-1
+        else: # nom.upper()>agd[meio][0].upper()
+            inicio=meio+1
+            
+    return [False,inicio]
+
+
+def create (agd):
+    digitouDireito=False
+    while not digitouDireito:
+        nome=input('\nNome.......: ')
+
+        resposta=pos(nome,agd)
+        achou   = resposta[0]
+        posicao = resposta[1]
+
+        if achou:
+            print ('Pessoa já existente - Favor redigitar...')
+        else:
+            digitouDireito=True
+            
+    aniversario= input('Aniversário: ')
+    endereco = input('Endereço: ')
+    telefone = input('Telefone: ')
+    celular = input('Celular: ')
+    email = input('e-mail: ')
+    contato=[nome,aniversario,endereco,telefone,celular,email]
+    agd.insert(posicao,contato)
+    print('Cadastro realizado com sucesso!')
+    
+    
+def procura(agd):
+    nome=input('Nome a ser procurado: ')
+    resposta=pos(nome,agd)
+    achou = resposta[0]
+    posicao = resposta[1]
+    
+    if achou:
+        print('Nome:',agd[posicao][0])
+        print('Aniversário:',agd[posicao][1])
+        print('Endereço:',agd[posicao][2])
+        print('Telefone:',agd[posicao][3])
+        print('Celular:',agd[posicao][4])
+        print('e-mail:',agd[posicao][5])
+    else:
+        print('Nome não encontrado!')

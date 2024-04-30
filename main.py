@@ -1,27 +1,4 @@
 
-def apresenteSe ():
-    print('+-------------------------------------------------------------+')
-    print('|                                                             |')
-    print('| AGENDA PESSOAL DE ANIVERSÁRIOS E FORMAS DE CONTATAR PESSOAS |')
-    print('|                                                             |')
-    print('| Prof André Luís dos Reis Gomes de Carvalho                  |')
-    print('|                                                             |')
-    print('| Versão 1.0 de 12/abril/2024                                 |')
-    print('|                                                             |')
-    print('+-------------------------------------------------------------+')
-
-def umTexto (solicitacao, mensagem, valido):
-    digitouDireito=False
-    while not digitouDireito:
-        txt=input(solicitacao)
-
-        if txt not in valido:
-            print(mensagem,'- Favor redigitar...')
-        else:
-            digitouDireito=True
-
-    return txt
-
 def opcaoEscolhida (mnu):
     print ()
 
@@ -83,29 +60,6 @@ def incluir (agd):
     
     agd.insert(posicao,contato)
     print('Cadastro realizado com sucesso!')
-
-def procurar (agd):
-    print('Opção não implementada!')
-    # Ficar pedindo para digitar um nome até digitar um nome que existe
-    # cadastrado;
-    # mostrar então na tela TODOS os demais dados encontrados 
-    # sobre aquela pessoa.
-
-def atualizar (agd):
-    print('Opção não implementada!')
-    # Ficar mostrando um menu oferecendo as opções de atualizar aniversário, ou
-    # endereco, ou telefone, ou celular, ou email, ou finalizar as
-    # atualizações; ficar pedindo para digitar a opção até digitar uma
-    # opção válida; realizar a atulização solicitada; até ser escolhida a
-    # opção de finalizar as atualizações.
-    # USAR A FUNÇÃO opcaoEscolhida, JÁ IMPLEMENTADA, PARA FAZER O MENU
-
-def listar (agd):
-    print('Opção não implementada!')
-    # implementar aqui a listagem de todos os dados de todos
-    # os contatos cadastrados
-    # printar aviso de que não há contatos cadastrados se
-    # esse for o caso
 
 def excluir (agd):
     print()
